@@ -1,0 +1,153 @@
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.center {
+  align-items: center;
+}
+
+.header {
+  justify-content: space-between;
+  padding-block: 1.23rem 1.45rem;
+  padding-inline: 1.5rem;
+}
+
+.header button {
+  border: none;
+  cursor: pointer;
+}
+
+.menu-btn,
+.close-btn {
+  background-color: transparent;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.53rem;
+  padding-block: 1.5rem;
+  padding-inline: 1.55rem 8.4rem;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.close-btn {
+  margin-bottom: 1.6rem;
+}
+
+.nav a {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: hsl(220, 13%, 13%);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: hsl(0 0% 0% / 75%);
+}
+
+.header-right {
+  gap: 1.4rem;
+  align-items: baseline;
+}
+
+.pic {
+  width: 24px;
+  height: 24px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+
+.pic:hover {
+  border: 2px solid hsl(26, 100%, 55%);
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .header {
+    padding-block: 1.85rem 2.1rem;
+  }
+
+  .header-right {
+    align-items: center;
+  }
+
+  .pic {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 650px) {
+  .header {
+    position: relative;
+  }
+
+  .header::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: hsl(220 14% 75%);
+  }
+
+  .menu-btn,
+  .close-btn {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    position: initial;
+    padding: 0;
+    gap: 1rem;
+  }
+
+  .nav a {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: hsl(219, 9%, 45%);
+  }
+
+  .nav li {
+    position: relative;
+  }
+
+  .nav li:hover:after {
+    content: '';
+    position: absolute;
+    bottom: -3.1rem;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: hsl(26, 100%, 55%);
+  }
+
+  .header-right {
+    gap: 2.9rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .nav {
+    gap: 2rem;
+  }
+
+  .header-left {
+    gap: 3.5rem;
+  }
+}
