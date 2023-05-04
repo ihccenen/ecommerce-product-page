@@ -10,10 +10,16 @@ import {
 
 type Product = {
   name: string;
-  price: string;
-  total: string;
+  company: string;
+  description: string;
+  price: number;
+  discount?:number;
+  discountedPrice?: number;
   quantity: number;
-  thumbnail: string;
+  images: {
+    original: string[];
+    thumbnail: string[];
+  };
 };
 
 export const CartContext = createContext<{
