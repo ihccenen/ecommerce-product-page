@@ -9,8 +9,10 @@
 
 .header {
   justify-content: space-between;
-  padding-block: 1.23rem 1.45rem;
+  padding-block: 1.05rem 1.38rem;
   padding-inline: 1.5rem;
+  max-width: 1110px;
+  margin-inline: auto;
 }
 
 .header button {
@@ -34,7 +36,7 @@
   gap: 1.53rem;
   padding-block: 1.5rem;
   padding-inline: 1.55rem 8.4rem;
-  background-color: hsl(0, 0%, 100%);
+  background-color: var(--white);
 }
 
 .close-btn {
@@ -44,7 +46,7 @@
 .nav a {
   font-size: 1.1rem;
   font-weight: 700;
-  color: hsl(220, 13%, 13%);
+  color: var(--v-d-blue);
 }
 
 .overlay {
@@ -67,7 +69,7 @@
 }
 
 .pic:hover {
-  border: 2px solid hsl(26, 100%, 55%);
+  border: 2px solid var(--orange);
 }
 
 .hidden {
@@ -89,7 +91,7 @@
   }
 }
 
-@media (min-width: 650px) {
+@media (min-width: 800px) {
   .header {
     position: relative;
   }
@@ -101,7 +103,7 @@
     right: 0;
     bottom: 0;
     height: 1px;
-    background-color: hsl(220 14% 75%);
+    background-color: var(--g-blue);
   }
 
   .menu-btn,
@@ -115,12 +117,13 @@
     position: initial;
     padding: 0;
     gap: 1rem;
+    z-index: 0;
   }
 
   .nav a {
     font-size: 0.95rem;
     font-weight: 400;
-    color: hsl(219, 9%, 45%);
+    color: var(--d-g-blue);
   }
 
   .nav li {
@@ -130,11 +133,11 @@
   .nav li:hover:after {
     content: '';
     position: absolute;
-    bottom: -3.1rem;
+    bottom: -3rem;
     left: 0;
     right: 0;
-    height: 3px;
-    background-color: hsl(26, 100%, 55%);
+    height: 5px;
+    background-color: var(--orange);
   }
 
   .header-right {
@@ -143,8 +146,13 @@
 }
 
 @media (min-width: 1000px) {
+  .header {
+    padding-block: 1.7rem 1.9rem;
+    padding-inline: 0;
+  }
+
   .nav {
-    gap: 2rem;
+    gap: 2.02rem;
   }
 
   .header-left {
