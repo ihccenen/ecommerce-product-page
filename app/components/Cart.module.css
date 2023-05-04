@@ -15,8 +15,8 @@
   font-weight: 600;
   z-index: 1;
   transform: translate(40%, -45%);
-  background-color: hsl(26, 100%, 55%);
-  color: hsl(0, 0%, 100%);
+  background-color: var(--orange);
+  color: var(--white);
   padding-block: 0.1rem;
   padding-inline: 0.4rem;
   border-radius: 40%;
@@ -32,13 +32,14 @@
   gap: 1.5rem;
   font-size: 1rem;
   display: grid;
-  background-color: hsl(0, 0%, 100%);
-  color: hsl(219, 9%, 45%);
+  background-color: var(--white);
+  color: var(--d-g-blue);
   width: min(22.5rem, 100%);
   padding-block: 1.44rem 2rem;
   padding-inline: 1.5rem;
   border-radius: 0.625rem;
   overflow: hidden;
+  z-index: 2;
 }
 
 .products-wrapper::before {
@@ -47,7 +48,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background-color: hsl(220 14% 75%);
+  background-color: var(--g-blue);
 }
 
 .product {
@@ -65,7 +66,7 @@
 }
 
 .bold {
-  color: hsl(220, 13%, 13%);
+  color: var(--v-d-blue);
   font-weight: 600;
 }
 
@@ -81,9 +82,9 @@
 
 .checkout-btn {
   font: inherit;
-  color: hsl(0, 0%, 100%);
+  color: var(--white);
   font-weight: 600;
-  background-color: hsl(26, 100%, 55%);
+  background-color: var(--orange);
   margin-top: 0.1rem;
   padding: 1.13rem;
   border-radius: 10px;
@@ -95,5 +96,16 @@
     top: 5.75rem;
     left: auto;
     right: 1rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .cart-icon {
+    filter: none;
+  }
+
+  .cart-icon:hover,
+  .remove-product-btn:hover {
+    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(304deg) brightness(40%) contrast(100%);
   }
 }
