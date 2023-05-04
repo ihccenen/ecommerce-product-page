@@ -1,4 +1,9 @@
-import { useContext, useState } from 'react';
+import {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import { CartContext } from '../CartContext';
 import styles from './Cart.module.css';
@@ -6,6 +11,7 @@ import styles from './Cart.module.css';
 export default function Cart() {
   const [open, setOpen] = useState(false);
   const { cart, setCart } = useContext(CartContext);
+  const ref = useRef<any>();
 
   const handleClick = () => setOpen((prev) => !prev);
 
@@ -13,8 +19,18 @@ export default function Cart() {
     setCart((prev) => prev.filter((item, i) => i !== index));
   };
 
+  const handleClickOutside = (e: MouseEvent) => {
+    if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('pointerdown', handleClickOutside);
+
+    return () => window.removeEventListener('pointerdown', handleClickOutside);
+  }, [ref]);
+
   return (
-    <div className={styles.cart}>
+    <div ref={ref} className={styles.cart}>
       <button type="button" aria-label="your cart" onClick={handleClick}>
         <Image
           className={styles['cart-icon']}
@@ -39,16 +55,16 @@ export default function Cart() {
           <div className={styles['products-wrapper']}>
             {cart.length < 1 ? (
               <div className={styles['empty-cart']}>
-                <p>Your cart is empty</p>
+                <p>Your cart is empty.</p>
               </div>
             ) : (
               cart.map(({
-                name, price, total, quantity, thumbnail,
+                name, price, quantity, images,
               }, index) => (
                 <div className={styles.product} key={Math.random()}>
                   <Image
                     className={styles.thumbnail}
-                    src={thumbnail}
+                    src={images.thumbnail[0]}
                     width={176}
                     height={176}
                     quality={100}
@@ -57,8 +73,8 @@ export default function Cart() {
                   <div>
                     <p>{name}</p>
                     <p>
-                      {`${price} x ${quantity} `}
-                      <span className={styles.bold}>{total}</span>
+                      {`$${price.toFixed(2)} x ${quantity} `}
+                      <span className={styles.bold}>{`$${(price * quantity).toFixed(2)}`}</span>
                     </p>
                   </div>
                   <button
@@ -74,7 +90,7 @@ export default function Cart() {
             )}
           </div>
           {cart.length > 0 && (
-            <button className={styles['checkout-btn']} type="button">
+            <button className={styles['checkout-btn']} type="button" onClick={handleClick}>
               Checkout
             </button>
           )}
